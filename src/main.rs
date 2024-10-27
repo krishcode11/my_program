@@ -34,7 +34,18 @@ fn main() {
     let s3:String = send_get_string(s2); //transfer of ownership from s2 to received_string
     println!("this is s3:{}",s3); //s3 is the new owner of worrld
 
+
+    let s1:String = String::from("hello"); //s1 is owner
+    let (s2,len) = calculate_length(s1);  // transfer ownership
+    println!("the length of {} is {}" ,s2,len); 
 }
+
+fn calculate_length(s:String)->(String,usize){
+let length:usize = s.len();
+return (s,length);
+}   //s will be new owner
+     
+
 fn get_string()->String{
     let new_string = String::from("hello");
     return new_string; //transfering the ownership
