@@ -36,15 +36,14 @@ fn main() {
 
 
     let s1:String = String::from("hello"); //s1 is owner
-    let (s2,len) = calculate_length(s1);  // transfer ownership
-    println!("the length of {} is {}" ,s2,len); 
+    let len = calculate_length(s1.clone());  // transfer ownership
+    println!("the length of {} is {}",s1,len); 
 }
 
-fn calculate_length(s:String)->(String,usize){
+fn calculate_length(s:String)->usize{
 let length:usize = s.len();
-return (s,length);
-}   //s will be new owner
-     
+return length;
+} 
 
 fn get_string()->String{
     let new_string = String::from("hello");
